@@ -11,7 +11,7 @@ int main(){
     printf("Input highscore: ");
     scanf("%d", &new_highscore);
 
-    //Open file
+    //Open file for reading
     ptr = fopen("test.txt", "r");
     int i = 0;
     while(fscanf(ptr,"%d", &num) > 0){
@@ -21,10 +21,11 @@ int main(){
     //Close file
     fclose(ptr);
 
+    //if new score is higher than previous highscore
     if (new_highscore > highscore[0]){
-        ptr = fopen("test.txt", "w");
-        fprintf(ptr,"%d",new_highscore);
-        fclose(ptr);
+        ptr = fopen("test.txt", "w");       //open file for writing
+        fprintf(ptr,"%d",new_highscore);    //write the file with new highscore
+        fclose(ptr);                        //Close file
     }
 
     return 0;
