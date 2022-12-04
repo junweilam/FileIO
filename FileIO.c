@@ -4,21 +4,28 @@
 
 int main(){
     FILE* ptr;
-    char ch;
+    int highscore[1];
+    int num;
+    int new_highscore;
+
+    printf("Input highscore: ");
+    scanf("%d", &new_highscore);
 
     //Open file
     ptr = fopen("test.txt", "r");
-
-    if(NULL == ptr){
-        printf("Error!");
+    int i = 0;
+    while(fscanf(ptr,"%d", &num) > 0){
+        highscore[i] = num;
+        i++;
     }
-
-    do{
-        ch = fgetc(ptr);
-        printf("%c", ch);
-    } while (ch != EOF);
-
     //Close file
     fclose(ptr);
+
+    if (new_highscore > highscore[0]){
+        ptr = fopen("test.txt", "w");
+        fprintf(ptr,"%d",new_highscore);
+        fclose(ptr);
+    }
+
     return 0;
 }
