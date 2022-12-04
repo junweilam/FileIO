@@ -10,6 +10,7 @@ int main(){
 
     printf("Input highscore: ");
     scanf("%d", &new_highscore);
+    system("clear");
 
     //Open file for reading
     ptr = fopen("test.txt", "r");
@@ -26,6 +27,9 @@ int main(){
         ptr = fopen("test.txt", "w");       //open file for writing
         fprintf(ptr,"%d",new_highscore);    //write the file with new highscore
         fclose(ptr);                        //Close file
+        printf("New highscore is saved");
+    }else{
+        printf("Try again");
     }
 
     return 0;
